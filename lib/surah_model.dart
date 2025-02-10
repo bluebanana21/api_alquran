@@ -12,19 +12,20 @@ class Surah {
   SuratSelanjutnya? suratSelanjutnya;
   bool? suratSebelumnya;
 
-  Surah(
-      {this.status,
-      this.nomor,
-      this.nama,
-      this.jumlahAyat,
-      this.namaLatin,
-      this.arti,
-      this.tempatTurun,
-      this.deskripsi,
-      this.audio,
-      this.ayat,
-      this.suratSelanjutnya,
-      this.suratSebelumnya});
+  Surah({
+    this.status,
+    this.nomor,
+    this.nama,
+    this.jumlahAyat,
+    this.namaLatin,
+    this.arti,
+    this.tempatTurun,
+    this.deskripsi,
+    this.audio,
+    this.ayat,
+    this.suratSelanjutnya,
+    this.suratSebelumnya,
+  });
 
   Surah.fromJson(Map<String, dynamic> json) {
     status = json['status'];
@@ -39,33 +40,33 @@ class Surah {
     if (json['ayat'] != null) {
       ayat = <Ayat>[];
       json['ayat'].forEach((v) {
-        ayat!.add(new Ayat.fromJson(v));
+        ayat!.add(Ayat.fromJson(v));
       });
     }
     suratSelanjutnya = json['surat_selanjutnya'] != null
-        ? new SuratSelanjutnya.fromJson(json['surat_selanjutnya'])
+        ? SuratSelanjutnya.fromJson(json['surat_selanjutnya'])
         : null;
     suratSebelumnya = json['surat_sebelumnya'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['status'] = this.status;
-    data['nomor'] = this.nomor;
-    data['nama'] = this.nama;
-    data['jumlah_ayat'] = this.jumlahAyat;
-    data['nama_latin'] = this.namaLatin;
-    data['arti'] = this.arti;
-    data['tempat_turun'] = this.tempatTurun;
-    data['deskripsi'] = this.deskripsi;
-    data['audio'] = this.audio;
-    if (this.ayat != null) {
-      data['ayat'] = this.ayat!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['status'] = status;
+    data['nomor'] = nomor;
+    data['nama'] = nama;
+    data['jumlah_ayat'] = jumlahAyat;
+    data['nama_latin'] = namaLatin;
+    data['arti'] = arti;
+    data['tempat_turun'] = tempatTurun;
+    data['deskripsi'] = deskripsi;
+    data['audio'] = audio;
+    if (ayat != null) {
+      data['ayat'] = ayat!.map((v) => v.toJson()).toList();
     }
-    if (this.suratSelanjutnya != null) {
-      data['surat_selanjutnya'] = this.suratSelanjutnya!.toJson();
+    if (suratSelanjutnya != null) {
+      data['surat_selanjutnya'] = suratSelanjutnya!.toJson();
     }
-    data['surat_sebelumnya'] = this.suratSebelumnya;
+    data['surat_sebelumnya'] = suratSebelumnya;
     return data;
   }
 }
@@ -90,13 +91,13 @@ class Ayat {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['surah'] = this.surah;
-    data['nomor'] = this.nomor;
-    data['ar'] = this.ar;
-    data['tr'] = this.tr;
-    data['idn'] = this.idn;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['surah'] = surah;
+    data['nomor'] = nomor;
+    data['ar'] = ar;
+    data['tr'] = tr;
+    data['idn'] = idn;
     return data;
   }
 }
@@ -136,16 +137,16 @@ class SuratSelanjutnya {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['nomor'] = this.nomor;
-    data['nama'] = this.nama;
-    data['nama_latin'] = this.namaLatin;
-    data['jumlah_ayat'] = this.jumlahAyat;
-    data['tempat_turun'] = this.tempatTurun;
-    data['arti'] = this.arti;
-    data['deskripsi'] = this.deskripsi;
-    data['audio'] = this.audio;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['nomor'] = nomor;
+    data['nama'] = nama;
+    data['nama_latin'] = namaLatin;
+    data['jumlah_ayat'] = jumlahAyat;
+    data['tempat_turun'] = tempatTurun;
+    data['arti'] = arti;
+    data['deskripsi'] = deskripsi;
+    data['audio'] = audio;
     return data;
   }
 }
